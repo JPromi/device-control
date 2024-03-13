@@ -8,13 +8,13 @@ router = APIRouter()
 async def shutdown(request: Request):
     if(is_local_ip(request)):
         if get_os() == "nt":
-            # os.system("shutdown /s /t 1")
+            os.system("shutdown /s /t 1")
             return {
                 "system": "Windows",
                 "status": "shutdown"
             }
         else:
-            # os.system("sudo shutdown now")
+            os.system("sudo shutdown now")
             return {
                 "system": "Linux",
                 "status": "shutdown"
@@ -26,13 +26,13 @@ async def shutdown(request: Request):
 async def reboot(request: Request):
     if(is_local_ip(request)):
         if get_os() == "nt":
-            # os.system("shutdown /r /t 1")
+            os.system("shutdown /r /t 1")
             return {
                 "system": "Windows",
                 "status": "reboot"
             }
         else:
-            # os.system("sudo reboot now")
+            os.system("sudo reboot now")
             return {
                 "system": "Linux",
                 "status": "reboot"
