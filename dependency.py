@@ -5,8 +5,18 @@ import socket
 import os
 
 def is_local_ip(request: Request):
-    # return request.client.host == socket.gethostbyname(socket.gethostname())
-    return request.client.host in [socket.gethostbyname(socket.gethostname())]
+    if(request.client.host == socket.gethostbyname(socket.gethostname())):
+        return True
+    
+    else:
+        clientHostSplit = request.client.host.split(".")
+        if(clientHostSplit[0] == "127" and clientHostSplit[1] == "0"):
+            return True
+        else:
+            return False
+        
+    
+    # return request.client.host in ["127.0.0.1", socket.gethostbyname(socket.gethostname())]
 
 def get_os():
     return os.name
