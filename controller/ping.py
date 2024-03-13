@@ -13,7 +13,8 @@ async def read_item(request: Request):
     return is_local_ip(request)
 
 @router.get("/ip")
-async def ip():
+async def ip(request: Request):
     return {
-        "ip": socket.gethostbyname(socket.gethostname())
+        "server": socket.gethostbyname(socket.gethostname()),
+        "client": request.client.host
         }
