@@ -2,8 +2,17 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import Response
 from starlette.requests import Request
 from controller import ping_router, power_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(ping_router, prefix="/ping")
 app.include_router(power_router, prefix="/system/power")
