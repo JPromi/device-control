@@ -14,7 +14,7 @@ async def shutdown(request: Request):
                 "status": "shutdown"
             }
         else:
-            os.system("sudo shutdown now")
+            os.system("shutdown now")
             return {
                 "system": "Linux",
                 "status": "shutdown"
@@ -32,7 +32,7 @@ async def reboot(request: Request):
                 "status": "reboot"
             }
         else:
-            os.system("sudo reboot now")
+            os.system("reboot now")
             return {
                 "system": "Linux",
                 "status": "reboot"
